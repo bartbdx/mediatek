@@ -7,20 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller extends com.cesi.repository.CreateView implements Initializable {
     @FXML
     private AnchorPane anchorPaneLeft;
 
@@ -45,10 +42,10 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             drawerContentAction();
+            hamburgerMenu();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        hamburgerMenu();
     }
 
     private void hamburgerMenu() {
@@ -72,7 +69,7 @@ public class Controller implements Initializable {
                 node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) ->{
                     switch (node.getAccessibleText()){
                         case "drawB_one" :
-                            goCreate();
+                            goCreate("/Create.fxml");
                             break;
                         case "drawB_two" :
                             break;
@@ -84,16 +81,4 @@ public class Controller implements Initializable {
         }
     }
 
-    public void goCreate(){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Create.fxml"));
-            Parent root2 = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("JAMM - Ajout d'une oeuvre");
-            stage.setScene(new Scene(root2));
-            stage.show();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-    }
 }
