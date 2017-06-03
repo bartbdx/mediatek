@@ -14,10 +14,8 @@ import java.util.Properties;
 public abstract class AbstractConnect {
 
     private static final String COM_MYSQL_JDBC_DRIVER = "com.mysql.jdbc.Driver" ;
+
     static Connection conn;
-    InputStream iS;
-    private Properties prop;
-    private String propFilename;
 
     public AbstractConnect() {
         try {
@@ -27,15 +25,19 @@ public abstract class AbstractConnect {
         }
     }
 
-    public Connection getConnection() throws IOException {
+    public static Connection getConnection() throws IOException {
         String host = null;
         String dbname = null;
         String user = null;
         String passwd = null;
         try {
+            Properties prop;
+            String propFilename;
+            InputStream iS;
             prop = new Properties();
             propFilename = "config.properties";
-            iS = getClass().getResourceAsStream(propFilename);
+            iS = AbstractConnect.class.getClassLoader().getResourceAsStream(propFilename);
+            //iS = getClass().getResourceAsStream(propFilename);
             if (iS != null) {
                 try {
                     prop.load(iS);
@@ -47,15 +49,14 @@ public abstract class AbstractConnect {
             dbname = prop.getProperty("dbname");
             user = prop.getProperty("user");
             passwd = prop.getProperty("passwd");
+            iS.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            iS.close();
         }
         try {
             conn = DriverManager.getConnection("jdbc:mysql://" + host + "/" + dbname, user, passwd);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Probleme de liaison SQL ;" + e.getMessage());
         }
         return conn;
     }

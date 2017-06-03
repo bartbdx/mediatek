@@ -1,14 +1,19 @@
 package com.cesi.view;
 
+import com.cesi.model.Oeuvre;
+import com.cesi.repository.Repo;
+import com.cesi.repository.impl.OeuvreRepositoryImpl;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -28,7 +33,7 @@ public class Controller extends com.cesi.repository.CreateView implements Initia
     private JFXDrawer drawer;
 
     @FXML
-    private TableView<?> tablelisting;
+    private TableView<Oeuvre> tablelisting;
 
     @FXML
     private TableColumn<?, ?> titreCol;
@@ -39,7 +44,20 @@ public class Controller extends com.cesi.repository.CreateView implements Initia
     @FXML
     private TableColumn<?, ?> origineCol;
 
+    private Repo repository;
+
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<Oeuvre> items;
+        titreCol.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
+        origineCol.setCellValueFactory(new PropertyValueFactory<>("origine"));
+        try {
+            repository = new OeuvreRepositoryImpl();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        items = repository.getListing();
+        tablelisting.setItems(items);
         try {
             drawerContentAction();
             hamburgerMenu();
