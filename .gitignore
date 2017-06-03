@@ -101,3 +101,10 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.idea/artifacts/
+.idea/inspectionProfiles/
+
+src/test/
+target/classes/com/cesi/model/
+target/generated-sources/
+target/test-classes/
