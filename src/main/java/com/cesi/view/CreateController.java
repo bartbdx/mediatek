@@ -51,6 +51,20 @@ public class CreateController implements Initializable {
                 e.printStackTrace();
             }
         });
+        videoBtn.setOnMouseClicked((MouseEvent event) -> {
+            try {
+                handleButton("/videos.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        jeuxBtn.setOnMouseClicked((MouseEvent event) -> {
+            try {
+                handleButton("/jeux.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @FXML

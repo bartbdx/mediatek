@@ -72,9 +72,7 @@ public class Controller extends com.cesi.repository.CreateView implements Initia
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) ->{
             burgerTask.setRate(burgerTask.getRate() * -1);
             burgerTask.play();
-
             if(drawer.isShown()) drawer.close(); else drawer.open();
-
         });
     }
 
