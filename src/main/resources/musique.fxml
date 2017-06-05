@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane minHeight="400.0" prefHeight="400.0">
+         <children>
+            <Label layoutX="39.0" layoutY="50.0" text="Genre" />
+            <Label layoutX="41.0" layoutY="80.0" text="Note" />
+            <Label layoutX="43.0" layoutY="16.0" text="Titre" />
+            <Label layoutX="352.0" layoutY="25.0" text="Artiste:" />
+            <Label layoutX="31.0" layoutY="200.0" text="Commentaire" />
+            <TextField fx:id="titreTf" layoutX="83.0" layoutY="12.0" prefHeight="25.0" prefWidth="219.0" />
+            <Slider fx:id="sliderNote" layoutX="83.0" layoutY="82.0" prefHeight="14.0" prefWidth="219.0" />
+            <TextArea fx:id="commentArea" layoutX="31.0" layoutY="224.0" prefHeight="119.0" prefWidth="537.0" />
+            <Button layoutX="463.0" layoutY="354.0" mnemonicParsing="false" text="Sauver et Fermer" />
+            <Button layoutX="368.0" layoutY="354.0" mnemonicParsing="false" text="Sauver" />
+            <Button fx:id="btnGenreAjout" layoutX="250.0" layoutY="46.0" mnemonicParsing="false" text="Ajouter" />
+            <ComboBox fx:id="genreCb" layoutX="83.0" layoutY="46.0" prefWidth="150.0" />
+            <ComboBox fx:id="auteurCb" layoutX="352.0" layoutY="46.0" prefWidth="150.0" />
+            <Button fx:id="btnAuteurAjout" layoutX="516.0" layoutY="46.0" mnemonicParsing="false" text="Ajouter" />
+            <Label layoutX="41.0" layoutY="109.0" text="Achevement" />
+            <Slider fx:id="sliderAchevmnt" layoutX="123.0" layoutY="111.0" prefHeight="14.0" prefWidth="178.0" />
+            <Label layoutX="352.0" layoutY="88.0" text="Support :" />
+            <ComboBox fx:id="supportCb" layoutX="352.0" layoutY="106.0" prefWidth="150.0" />
+            <Button fx:id="btnSupportAjout" layoutX="516.0" layoutY="106.0" mnemonicParsing="false" text="Ajouter" />
+            <TextField layoutX="420.0" layoutY="155.0" />
+            <Label layoutX="354.0" layoutY="159.0" text="Origine" />
+            <Button layoutX="83.0" layoutY="155.0" mnemonicParsing="false" text="Ajouter les pistes de l'album" />
+         </children>
+      </Pane>
+   </children>
+</VBox>
